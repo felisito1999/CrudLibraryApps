@@ -1,0 +1,10 @@
+Y:\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.dll
+Y:\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.pdb
+Y:\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.csprojAssemblyReference.cache
+Y:\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.dll
+Y:\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.pdb
+\\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.dll
+\\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.pdb
+\\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.csprojAssemblyReference.cache
+\\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.dll
+\\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.pdb
