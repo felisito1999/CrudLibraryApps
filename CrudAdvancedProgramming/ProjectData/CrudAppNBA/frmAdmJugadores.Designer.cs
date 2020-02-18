@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmJugadores));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -45,7 +46,9 @@
             this.cbPais = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnQuitarSeleccion = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -116,6 +119,9 @@
             // 
             // cbSexo
             // 
+            this.cbSexo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSexo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbSexo.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Location = new System.Drawing.Point(133, 228);
@@ -133,6 +139,9 @@
             // 
             // cbEstado
             // 
+            this.cbEstado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbEstado.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstado.FormattingEnabled = true;
             this.cbEstado.Location = new System.Drawing.Point(157, 398);
@@ -149,14 +158,14 @@
             this.dgvJugadores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvJugadores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(170)))), ((int)(((byte)(240)))));
             this.dgvJugadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvJugadores.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvJugadores.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvJugadores.Location = new System.Drawing.Point(13, 635);
             this.dgvJugadores.Name = "dgvJugadores";
             this.dgvJugadores.RowHeadersWidth = 82;
@@ -167,9 +176,9 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
             this.btnGuardar.FlatAppearance.BorderSize = 2;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(547, 385);
             this.btnGuardar.Name = "btnGuardar";
@@ -181,9 +190,10 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnBorrar.BackColor = System.Drawing.Color.Transparent;
             this.btnBorrar.FlatAppearance.BorderSize = 2;
-            this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrar.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBorrar.Location = new System.Drawing.Point(863, 385);
             this.btnBorrar.Name = "btnBorrar";
@@ -195,6 +205,9 @@
             // 
             // cbPais
             // 
+            this.cbPais.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPais.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbPais.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPais.FormattingEnabled = true;
             this.cbPais.Location = new System.Drawing.Point(122, 488);
@@ -214,9 +227,9 @@
             // 
             // btnQuitarSeleccion
             // 
-            this.btnQuitarSeleccion.BackColor = System.Drawing.Color.IndianRed;
+            this.btnQuitarSeleccion.BackColor = System.Drawing.Color.Transparent;
             this.btnQuitarSeleccion.FlatAppearance.BorderSize = 2;
-            this.btnQuitarSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnQuitarSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitarSeleccion.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitarSeleccion.Location = new System.Drawing.Point(547, 491);
             this.btnQuitarSeleccion.Name = "btnQuitarSeleccion";
@@ -226,6 +239,17 @@
             this.btnQuitarSeleccion.UseVisualStyleBackColor = false;
             this.btnQuitarSeleccion.Click += new System.EventHandler(this.btn_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1194, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(641, 288);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmAdmJugadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -234,6 +258,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1894, 1274);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnQuitarSeleccion);
             this.Controls.Add(this.cbPais);
             this.Controls.Add(this.label6);
@@ -255,6 +280,7 @@
             this.Text = "Administracion jugadores";
             this.Load += new System.EventHandler(this.frmAdmJugadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJugadores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,5 +304,6 @@
         private System.Windows.Forms.ComboBox cbPais;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnQuitarSeleccion;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
