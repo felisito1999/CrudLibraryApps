@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectData;
 using ProjectData.Models;
+using ProjectData.DataMethods;
 
 namespace CrudAppNBA
 {
@@ -27,23 +28,23 @@ namespace CrudAppNBA
         }
         public void LoadData()
         {
-            DataMethods dataMethods = new DataMethods();
-
             try
             {
-                cbSexo.DataSource = dataMethods.SelectAllSexos();
+                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
+
+                cbSexo.DataSource = dataMethodsRepo.GetSexoMethods().SelectAllSexos();
                 cbSexo.DisplayMember = "NombreSexo";
                 cbSexo.ValueMember = "CodigoSexo";
 
-                cbEstado.DataSource = dataMethods.SelectAllEstados();
+                cbEstado.DataSource = dataMethodsRepo.GetEstadoMethods().SelectAllEstados();
                 cbEstado.DisplayMember = "DescripcionEstado";
                 cbEstado.ValueMember = "CodigoEstado";
 
-                cbPais.DataSource = dataMethods.SelectAllPaises();
+                cbPais.DataSource = dataMethodsRepo.GetPaisMethods().SelectAllPaises();
                 cbPais.DisplayMember = "NombrePais";
                 cbPais.ValueMember = "CodigoPais";
 
-                dgvJugadores.DataSource = dataMethods.SelectViewJugador();
+                dgvJugadores.DataSource = dataMethodsRepo.GetJugadorMethods().SelectViewJugador();
             }
             catch (Exception ex)
             {
@@ -81,9 +82,9 @@ namespace CrudAppNBA
                     jugador.FechaCreacion = DateTime.Now;
                     jugador.Estado = estado;
 
-                    DataMethods dataMethods = new DataMethods();
+                    DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
 
-                    dataMethods.UpdateJugador(jugador);
+                    dataMethodsRepo.GetJugadorMethods().UpdateJugador(jugador);
                     LoadData();
                     ClearFields();
                     MessageBox.Show("El jugador ha sido actualizado exitosamente!");
@@ -112,9 +113,9 @@ namespace CrudAppNBA
                     jugador.FechaCreacion = DateTime.Now;
                     jugador.Estado = estado;
 
-                    DataMethods dataMethods = new DataMethods();
+                    DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
 
-                    dataMethods.InsertJugador(jugador);
+                    dataMethodsRepo.GetJugadorMethods().InsertJugador(jugador);
                     LoadData();
                     ClearFields();
                     MessageBox.Show("El jugador ha sido ingresado existosamente");
@@ -153,10 +154,10 @@ namespace CrudAppNBA
         {
             if (dgvJugadores.RowCount >= 1)
             {
-                DataMethods dataMethods = new DataMethods();
+                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
                 CodigoJugador = (int)dgvJugadores[0, dgvJugadores.CurrentRow.Index].Value;
 
-                var jugador = dataMethods.SelectJugadorById(CodigoJugador);
+                var jugador = dataMethodsRepo.GetJugadorMethods().SelectJugadorById(CodigoJugador);
 
                 txtNombre.Text = jugador.Nombre;
                 txtApellido.Text = jugador.Apellido;
@@ -169,12 +170,19 @@ namespace CrudAppNBA
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            DataMethods dataMethods = new DataMethods();
+            if (CodigoJugador != 0)
+            {
+                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
 
-            dataMethods.DeletedUpdateJugadores(CodigoJugador);
-            LoadData();
-            ClearFields();
-            MessageBox.Show("El elemento seleccionado ha sido borrado!");
+                dataMethodsRepo.GetJugadorMethods().DeletedUpdateJugadores(CodigoJugador);
+                LoadData();
+                ClearFields();
+                MessageBox.Show("El elemento seleccionado ha sido borrado!");
+            }
+            else
+            {
+                MessageBox.Show("No se puede borrar porque no hay ningun elemento seleccionado!");
+            }
         }
 
         private void btn_Click(object sender, EventArgs e)

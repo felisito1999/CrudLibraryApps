@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Configuration;
 using ProjectData.Models;
 
-namespace ProjectData
+namespace ProjectData.DataMethods
 {
-    public class DataMethods
+    public class JugadorMethods
     {
         public void InsertJugador(Jugador jugador)
         {
@@ -20,7 +19,7 @@ namespace ProjectData
             using (connection)
             {
                 connection.Open();
-                using(SqlCommand command = new SqlCommand(addJugadorCommand, connection))
+                using (SqlCommand command = new SqlCommand(addJugadorCommand, connection))
                 {
                     command.Parameters.AddWithValue("@nombre", jugador.Nombre);
                     command.Parameters.AddWithValue("@apellido", jugador.Apellido);
@@ -70,7 +69,7 @@ namespace ProjectData
 
             using (connection)
             {
-                using (SqlCommand command = new SqlCommand(deletedUpdateCommand,connection))
+                using (SqlCommand command = new SqlCommand(deletedUpdateCommand, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
 
@@ -132,7 +131,7 @@ namespace ProjectData
 
             string getJugadorByIdCommand = "SELECT CodigoJugador, Nombrejugador, ApellidoJugador, PaisJugador, Sexo, FechaNacimiento, Estado, Deleted FROM " +
                 "Jugadores WHERE CodigoJugador = @id";
-            
+
             using (connection)
             {
                 using (SqlCommand command = new SqlCommand(getJugadorByIdCommand, connection))
@@ -148,9 +147,10 @@ namespace ProjectData
                     {
                         while (reader.Read())
                         {
-                            var pais = SelectPaisesById(reader.GetInt32(3));
-                            var sexo = SelectSexoById(reader.GetInt32(4));
-                            var estado = SelectEstadoById(reader.GetInt32(6));
+                            DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
+                            var pais = dataMethodsRepo.GetPaisMethods().SelectPaisesById(reader.GetInt32(3));
+                            var sexo = dataMethodsRepo.GetSexoMethods().SelectSexoById(reader.GetInt32(4));
+                            var estado = dataMethodsRepo.GetEstadoMethods().SelectEstadoById(reader.GetInt32(6));
 
                             jugador.CodigoJugador = id;
                             jugador.Nombre = reader.GetString(1);
@@ -164,211 +164,6 @@ namespace ProjectData
                         connection.Close();
                     }
                     return jugador;
-                }
-            }
-        }
-        public void InsertEquipos(Equipo equipo)
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string addEquiposCommand = "INSERT INTO Equipos VALUES(@nombreEquipo, @paisEquipo, @estado, @fechaCreacion, @deleted;";
-
-            using (SqlCommand command = new SqlCommand(addEquiposCommand, connection))
-            {
-                command.Parameters.AddWithValue("@nombreEquipo", equipo.Nombre);
-                command.Parameters.AddWithValue("@paisEquipo", equipo.Pais.CodigoPais);
-                command.Parameters.AddWithValue("@estado", equipo.Estado.CodigoEstado);
-                command.Parameters.AddWithValue("@fechaCreacion", equipo.FechaCreacion);
-                command.Parameters.AddWithValue("@deleted", equipo.Deleted);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
-        }
-        public void UpdateEquipos(int id)
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string addEquiposCommand = "INSERT INTO Equipos VALUES(@nombreEquipo, @paisEquipo, @estado, @fechaCreacion, @deleted);";
-
-            using (SqlCommand command = new SqlCommand(addEquiposCommand, connection))
-            {
-                Equipo equipo = new Equipo();
-
-                command.Parameters.AddWithValue("@nombreEquipo", equipo.Nombre);
-                command.Parameters.AddWithValue("@paisEquipo", equipo.Pais.CodigoPais);
-                command.Parameters.AddWithValue("@estado", equipo.Estado.CodigoEstado);
-                command.Parameters.AddWithValue("@fechaCreacion", equipo.FechaCreacion);
-                command.Parameters.AddWithValue("@deleted", equipo.Deleted);
-
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
-        }
-        public List<Estado> SelectAllEstados()
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectAllEstadosCommand = "SELECT CodigoEstado, DescripcionEstado FROM Estados";
-
-            using (connection)
-            {
-                using (SqlCommand command = new SqlCommand(selectAllEstadosCommand, connection))
-                {
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    List<Estado> estadosList = new List<Estado>();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            Estado estado = new Estado();
-
-                            estado.CodigoEstado = reader.GetInt32(0);
-                            estado.DescripcionEstado = reader.GetString(1);
-
-                            estadosList.Add(estado);
-                        }
-                    }
-                    connection.Close();
-                    return estadosList;
-                }
-            }
-        }
-        public Estado SelectEstadoById(int id)
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectEstadoByIdCommand = "SELECT CodigoEstado, DescripcionEstado FROM Estados WHERE CodigoEstado = @id;";
-
-            using (connection)
-            {
-                using (SqlCommand command = new SqlCommand(selectEstadoByIdCommand, connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    Estado estado = new Estado();
-                    while (reader.Read())
-                    {
-                        estado.CodigoEstado = reader.GetInt32(0);
-                        estado.DescripcionEstado = reader.GetString(1);
-                    }
-                    connection.Close();
-                    return estado;
-                }
-            }
-        }
-        public List<Sexo> SelectAllSexos()
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectAllSexosCommand = "SELECT CodigoSexo, NombreSexo FROM Sexos";
-
-            using (SqlCommand command = new SqlCommand(selectAllSexosCommand, connection))
-            {
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                List<Sexo> sexosList = new List<Sexo>();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        Sexo sexo = new Sexo();
-
-                        sexo.CodigoSexo = reader.GetInt32(0);
-                        sexo.NombreSexo = reader.GetString(1);
-
-                        sexosList.Add(sexo);
-                    }
-                    connection.Close();
-                }
-                return sexosList;
-            }
-        }
-        public Sexo SelectSexoById(int id)
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectSexoByIdCommand = "SELECT CodigoSexo, NombreSexo FROM Sexos WHERE CodigoSexo = @id;";
-
-            using (connection)
-            {
-                using (SqlCommand command = new SqlCommand(selectSexoByIdCommand, connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    Sexo sexo = new Sexo();
-                    while (reader.Read())
-                    {
-                        sexo.CodigoSexo = reader.GetInt32(0);
-                        sexo.NombreSexo = reader.GetString(1);
-                    }
-                    connection.Close();
-                    return sexo;
-                }
-            }
-        }
-        public List<Pais> SelectAllPaises()
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectAllPaisesCommand = "SELECT CodigoPais, NombrePais FROM Paises;";
-
-            using (connection)
-            {
-                using (SqlCommand command = new SqlCommand(selectAllPaisesCommand, connection))
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    List<Pais> paisesList = new List<Pais>();
-                    if (reader.HasRows)
-                    {
-                        while(reader.Read())
-                        {
-                            Pais pais = new Pais();
-
-                            pais.CodigoPais = reader.GetInt32(0);
-                            pais.NombrePais = reader.GetString(1);
-
-                            paisesList.Add(pais);
-                        }
-                    }
-                    connection.Close();
-                    return paisesList;
-                }
-            }
-        }
-        public Pais SelectPaisesById(int id)
-        {
-            var connection = ConnectionFactory.GetConnection();
-            string selectPaisesByIdCommand = "SELECT CodigoPais, NombrePais, ISO_Pais FROM Paises WHERE CodigoPais = @id";
-
-            using (connection)
-            {
-                using (SqlCommand command = new SqlCommand(selectPaisesByIdCommand, connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    Pais pais = new Pais();
-                    
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            pais.CodigoPais = reader.GetInt32(0);
-                            pais.NombrePais = reader.GetString(1);
-                            pais.ISO_Pais = reader.GetString(2);
-                        }
-                    }
-                    return pais;
                 }
             }
         }

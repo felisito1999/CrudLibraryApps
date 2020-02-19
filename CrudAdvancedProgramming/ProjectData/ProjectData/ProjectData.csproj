@@ -43,7 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionFactory.cs" />
-    <Compile Include="DataMethods.cs" />
+    <Compile Include="DataMethods\DataMethodsRepo.cs" />
+    <Compile Include="DataMethods\EquipoMethods.cs" />
+    <Compile Include="DataMethods\EstadisticasJugadorMethods.cs" />
+    <Compile Include="DataMethods\EstadoMethods.cs" />
+    <Compile Include="DataMethods\JugadorMethods.cs" />
+    <Compile Include="DataMethods\PaisMethods.cs" />
+    <Compile Include="DataMethods\SexoMethods.cs" />
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\Jugador.cs" />
@@ -54,5 +60,6 @@
     <Compile Include="Models\ViewJugador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

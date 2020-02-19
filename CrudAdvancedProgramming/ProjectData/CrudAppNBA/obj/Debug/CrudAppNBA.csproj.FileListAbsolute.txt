@@ -24,3 +24,17 @@ Y:\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.csproj.CopyComplete
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.exe
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\bin\Debug\CrudAppNBA.exe.config
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\bin\Debug\CrudAppNBA.exe
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\bin\Debug\CrudAppNBA.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\bin\Debug\ProjectData.dll
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\bin\Debug\ProjectData.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.csprojAssemblyReference.cache
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.frmPrincipal.resources
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.frmAdmJugadores.resources
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.Properties.Resources.resources
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.csproj.GenerateResource.cache
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.csproj.CopyComplete
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.exe
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.EstadisticasJugador.resources

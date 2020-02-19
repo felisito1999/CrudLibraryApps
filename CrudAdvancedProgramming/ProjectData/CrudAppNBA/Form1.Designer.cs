@@ -58,7 +58,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(15, 6, 0, 6);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1697, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(1697, 50);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,13 +74,13 @@
             // AcercaDe
             // 
             this.AcercaDe.Name = "AcercaDe";
-            this.AcercaDe.Size = new System.Drawing.Size(359, 44);
+            this.AcercaDe.Size = new System.Drawing.Size(253, 44);
             this.AcercaDe.Text = "Acerca de";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(253, 44);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // jugadoresToolStripMenuItem
@@ -104,6 +104,7 @@
             this.estadisticasDeJugadoresToolStripMenuItem.Name = "estadisticasDeJugadoresToolStripMenuItem";
             this.estadisticasDeJugadoresToolStripMenuItem.Size = new System.Drawing.Size(461, 44);
             this.estadisticasDeJugadoresToolStripMenuItem.Text = "Estadisticas de jugadores ";
+            this.estadisticasDeJugadoresToolStripMenuItem.Click += new System.EventHandler(this.estadisticasDeJugadoresToolStripMenuItem_Click);
             // 
             // equiposToolStripMenuItem
             // 

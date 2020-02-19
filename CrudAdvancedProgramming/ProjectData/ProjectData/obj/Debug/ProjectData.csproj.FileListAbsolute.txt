@@ -8,3 +8,8 @@ Y:\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.pdb
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.csprojAssemblyReference.cache
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.dll
 \\Mac\Home\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.csprojAssemblyReference.cache
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.dll
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\ProjectData\obj\Debug\ProjectData.pdb
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.dll
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\ProjectData\bin\Debug\ProjectData.pdb

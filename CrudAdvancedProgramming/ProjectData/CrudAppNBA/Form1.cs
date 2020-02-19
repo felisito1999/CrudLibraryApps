@@ -20,8 +20,13 @@ namespace CrudAppNBA
         private void administracionDeJugadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAdmJugadores admJugadores = new frmAdmJugadores();
-
             admJugadores.ShowDialog();
+        }
+
+        private void estadisticasDeJugadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Estadisticasjugador estadisticasJugador = new Estadisticasjugador();
+            estadisticasJugador.ShowDialog();
         }
     }
 }
