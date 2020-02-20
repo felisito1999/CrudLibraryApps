@@ -25,7 +25,7 @@ namespace CrudAppNBA
 
         private void estadisticasDeJugadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Estadisticasjugador estadisticasJugador = new Estadisticasjugador();
+            frmEstadisticasjugador estadisticasJugador = new frmEstadisticasjugador();
             estadisticasJugador.ShowDialog();
         }
     }

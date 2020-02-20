@@ -37,4 +37,4 @@ Y:\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.csproj.CopyComplete
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.exe
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
-\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.EstadisticasJugador.resources
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.frmEstadisticasjugador.resources

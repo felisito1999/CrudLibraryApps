@@ -206,5 +206,40 @@ namespace ProjectData.DataMethods
                 }
             }
         }
+        public List<ViewJugador> SelectJugadorByName(string nombre)
+        {
+            var connection = ConnectionFactory.GetConnection();
+            string selectJugadorByNameCommand = "SELECT a.CodigoJugador, a.NombreJugador AS Nombre, a.ApellidoJugador AS Apellido, b.NombrePais AS Pais, d.NombreSexo AS Sexo, FechaNacimiento " +
+            "AS [Fecha de nacimiento], c.DescripcionEstado AS Estado FROM Jugadores a INNER JOIN Paises b ON a.PaisJugador = b.CodigoPais INNER JOIN Estados c ON " +
+            "a.Estado = c.CodigoEstado INNER JOIN Sexos d ON a.Sexo = d.CodigoSexo WHERE a.Deleted = 0;";
+
+            using(connection)
+            {
+                using (SqlCommand command = new SqlCommand(selectJugadorByNameCommand, connection))
+                {
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+                    ViewJugador viewJugador = new ViewJugador();
+                    List<ViewJugador> viewJugadorList = new List<ViewJugador>();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read()) ;
+                        {
+                            viewJugador.CodigoJugador = reader.GetInt32(0);
+                            viewJugador.Nombre = reader.GetString(1);
+                            viewJugador.Apellido = reader.GetString(2);
+                            viewJugador.NombrePais = reader.GetString(3);
+                            viewJugador.NombreSexo = reader.GetString(4);
+                            viewJugador.FechaNacimiento = reader.GetDateTime(5);
+                            viewJugador.DescripcionEstado = reader.GetString(6);
+
+                            viewJugadorList.Add(viewJugador);
+                        }
+                        //var filterContainsName = viewJugadorList.FindAll(viewJugadorList.Where(NombreCompleto => filterList.C))
+                    }
+                }
+            }
+        }
     }
 }

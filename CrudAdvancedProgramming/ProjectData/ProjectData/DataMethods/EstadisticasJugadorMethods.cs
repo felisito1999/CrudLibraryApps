@@ -55,7 +55,7 @@ namespace ProjectData.DataMethods
         {
             var connection = ConnectionFactory.GetConnection();
             string insertEstadisticasCommand = "INSERT INTO EstadisticasJugador VALUES (@CodigoJugador, @PuntosTotales, @AsistenciasTotales, @RebotesTotales, @TirosDeCampoIntentados, " +
-                "@TirosDeCampoEncestadosyokjnb );"
+                "@TirosDeCampoEncestadosyokjnb );";
         }
     }
 }
