@@ -8,6 +8,10 @@ namespace ProjectData.Models
 {
     public class EstadisticasJugador
     {
+        public EstadisticasJugador()
+        {
+            this.AsistenciasPorJuego = 2;
+        }
         public int CodigoStats { get; set; }
         public Jugador Jugador { get; set; }
         public int PuntosTotales { get; set; }

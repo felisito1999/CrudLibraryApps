@@ -44,9 +44,11 @@ namespace CrudAppNBA
         public int CodigoJugador;
         private void dgvBusquedaJugadores_SelectionChanged(object sender, EventArgs e)
         {
-            var 
-            CodigoJugador = (int)dgvBusquedaJugadores[0, dgvBusquedaJugadores.CurrentRow.Index].Value;
-            dgvEstadisticasJugadores.DataSource = 
+            CodigoJugador = (int)dgvBusquedaJugadores[0, dgvBusquedaJugadores.CurrentRow.Index].Value;        
+            DataMethodsRepo dataMethods = new DataMethodsRepo();
+            var EstadisticasJugador = dataMethods.GetEstadisticasJugadorMethods().SelectEstadisticasByIdJugador(CodigoJugador);
+            dgvEstadisticasJugadores.DataSource = EstadisticasJugador;
+
         }
     }
 }

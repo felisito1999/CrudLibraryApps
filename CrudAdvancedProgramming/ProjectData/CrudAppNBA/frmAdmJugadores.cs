@@ -73,6 +73,9 @@ namespace CrudAppNBA
                     estado.CodigoEstado = (int)cbEstado.SelectedValue;
                     estado.DescripcionEstado = cbEstado.SelectedText;
 
+                    EstadisticasJugador estadisticas = new EstadisticasJugador();
+                    estad
+
                     jugador.CodigoJugador = CodigoJugador;
                     jugador.Nombre = txtNombre.Text;
                     jugador.Apellido = txtApellido.Text;

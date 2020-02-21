@@ -14,7 +14,7 @@ namespace ProjectData.DataMethods
         {
             var connection = ConnectionFactory.GetConnection();
             string selectEstadisticasByIdCommand = "SELECT CodigoStats, CodigoJugador, PuntosTotales, AsistenciasTotales, RebotesTotales, TirosDeCampoIntentados, " +
-                "TirosDeCampoEncestados, PerdidasDeBalon, JuegosTotales, JuegosIniciados, FechaCreacion, Deleted, FROM EstadisticasJugador" +
+                "TirosDeCampoEncestados, PerdidasDeBalon, JuegosTotales, JuegosIniciados, FechaCreacion, Deleted FROM EstadisticasJugador " +
                 "WHERE CodigoJugador = @id AND Deleted = 0;";
 
             using (connection)
@@ -47,11 +47,15 @@ namespace ProjectData.DataMethods
                         }
                         connection.Close();
                     }
+                    else
+                    {
+
+                    }
                     return estadisticasJugador;
                 }
             }
         }
-        public void InsertEstadisticasJugador(EstadisticasJugador estadisticas, Jugador jugador)
+        public void InsertEstadisticasJugador(EstadisticasJugador estadisticas)
         {
             var connection = ConnectionFactory.GetConnection();
             string insertEstadisticasCommand = "INSERT INTO EstadisticasJugador VALUES (@CodigoJugador, @PuntosTotales, @AsistenciasTotales, @RebotesTotales, @TirosDeCampoIntentados, " +
