@@ -24,5 +24,29 @@ namespace CrudAppNBA
             var jugadores = dataMethods.GetJugadorMethods().SelectViewJugador();
             dgvBusquedaJugadores.DataSource = jugadores;
         }
+
+        private void txtBusquedaJugador_TextChanged(object sender, EventArgs e)
+        {
+            var nombreJugador = txtBusquedaJugador.Text;
+            DataMethodsRepo dataMethods = new DataMethodsRepo();
+            var busquedaJugadores = dataMethods.GetJugadorMethods().SelectJugadorByName(nombreJugador);
+            var allJugadores = dataMethods.GetJugadorMethods().SelectViewJugador();
+
+            if (string.IsNullOrWhiteSpace(txtBusquedaJugador.Text) == true)
+            {
+                dgvBusquedaJugadores.DataSource = allJugadores;
+            }
+            else
+            {
+                dgvBusquedaJugadores.DataSource = busquedaJugadores;
+            }
+        }
+        public int CodigoJugador;
+        private void dgvBusquedaJugadores_SelectionChanged(object sender, EventArgs e)
+        {
+            var 
+            CodigoJugador = (int)dgvBusquedaJugadores[0, dgvBusquedaJugadores.CurrentRow.Index].Value;
+            dgvEstadisticasJugadores.DataSource = 
+        }
     }
 }

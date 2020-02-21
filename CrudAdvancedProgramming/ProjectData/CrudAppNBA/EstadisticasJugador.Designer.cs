@@ -50,6 +50,7 @@
             this.dgvBusquedaJugadores.RowTemplate.Height = 33;
             this.dgvBusquedaJugadores.Size = new System.Drawing.Size(1295, 1093);
             this.dgvBusquedaJugadores.TabIndex = 0;
+            this.dgvBusquedaJugadores.SelectionChanged += new System.EventHandler(this.dgvBusquedaJugadores_SelectionChanged);
             // 
             // dgvEstadisticasJugadores
             // 
@@ -79,6 +80,7 @@
             this.txtBusquedaJugador.Name = "txtBusquedaJugador";
             this.txtBusquedaJugador.Size = new System.Drawing.Size(1295, 43);
             this.txtBusquedaJugador.TabIndex = 3;
+            this.txtBusquedaJugador.TextChanged += new System.EventHandler(this.txtBusquedaJugador_TextChanged);
             // 
             // lblBusquedaJugador
             // 

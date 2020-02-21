@@ -220,12 +220,14 @@ namespace ProjectData.DataMethods
                     connection.Open();
 
                     SqlDataReader reader = command.ExecuteReader();
-                    ViewJugador viewJugador = new ViewJugador();
+                    List<ViewJugador> filterContainsName = new List<ViewJugador>();
                     List<ViewJugador> viewJugadorList = new List<ViewJugador>();
+
                     if (reader.HasRows)
                     {
-                        while (reader.Read()) ;
+                        while (reader.Read()) 
                         {
+                            ViewJugador viewJugador = new ViewJugador();
                             viewJugador.CodigoJugador = reader.GetInt32(0);
                             viewJugador.Nombre = reader.GetString(1);
                             viewJugador.Apellido = reader.GetString(2);
@@ -236,8 +238,9 @@ namespace ProjectData.DataMethods
 
                             viewJugadorList.Add(viewJugador);
                         }
-                        //var filterContainsName = viewJugadorList.FindAll(viewJugadorList.Where(NombreCompleto => filterList.C))
+                        filterContainsName = viewJugadorList.FindAll(x => x.NombreCompleto.ToUpper().Contains(nombre.ToUpper()));                        
                     }
+                    return filterContainsName;
                 }
             }
         }
