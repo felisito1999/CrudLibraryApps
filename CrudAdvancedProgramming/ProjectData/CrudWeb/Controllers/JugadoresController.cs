@@ -26,18 +26,27 @@ namespace CrudWeb.Controllers
         }
         public ActionResult UpdateJugador(int id)
         {
-            var jugador = dataMethodsRepo.GetJugadorMethods().SelectJugadorById(id);
-            jugador.Nombre = ViewBag.Nombre;
-            jugador.Apellido = ViewBag.Apellido;
-            jugador.FechaNacimiento
+            var jugador = dataMethodsRepo.GetJugadorMethods().SelectJugadorById (id);
+            //jugador.Nombre = ViewBag.Nombre;
+            //jugador.Apellido = ViewBag.Apellido;
+            //jugador.FechaNacimiento
             var estado = dataMethodsRepo.GetEstadoMethods().SelectAllEstados();
             var sexo = dataMethodsRepo.GetSexoMethods().SelectAllSexos();
 
             ViewBag.Pais = new SelectList(dataMethodsRepo.GetPaisMethods().SelectAllPaises(), "CodigoPais", "NombrePais");
-            ViewBag.Estado = new SelectList(dataMethodsRepo.GetEstadoMethods().SelectAllEstados(), "CodigoEstado", "DescripcionEstado")
-            ViewBag.estado = estado;
-            ViewBag.sexo = sexo;
+            ViewBag.Estado = new SelectList(dataMethodsRepo.GetEstadoMethods().SelectAllEstados(), "CodigoEstado", "DescripcionEstado");
+            ViewBag.Sexo = new SelectList(dataMethodsRepo.GetSexoMethods().SelectAllSexos(), "CodigoSexo", "NombreSexo");
+            //ViewBag.estado = estado;
+            //ViewBag.sexo = sexo;
             
+            return View(jugador);
+        }
+        [HttpPost]
+        public ActionResult UpdateJugador(Jugador jugador)
+        {
+
+            dataMethodsRepo.GetJugadorMethods().UpdateJugador(jugador);
+
             return View(jugador);
         }
     }
