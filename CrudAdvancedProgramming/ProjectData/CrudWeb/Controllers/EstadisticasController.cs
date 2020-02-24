@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProjectData.DataMethods;
+using ProjectData.Models;
 
 namespace CrudWeb.Controllers
 {
@@ -11,10 +12,16 @@ namespace CrudWeb.Controllers
     {
         // GET: Estadisticas
         DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
-        public ActionResult Index(int id)
+        public ActionResult EstadisticasByJugadorId(int id)
         {
             var estadisticas = dataMethodsRepo.GetEstadisticasJugadorMethods().SelectEstadisticasByIdJugador(id);
             return View(estadisticas);
+        }
+        public ActionResult UpdateEstadisticas(int id, EstadisticasJugador estadisticasJugador)
+        {
+            var estadisticas = dataMethodsRepo.GetEstadisticasJugadorMethods().SelectEstadisticasByIdJugador(id);
+            dataMethodsRepo.GetEstadisticasJugadorMethods().UpdateEstadisticasJugador(estadisticasJugador);
+            return View(estadisticasJugador);
         }
     }
 }

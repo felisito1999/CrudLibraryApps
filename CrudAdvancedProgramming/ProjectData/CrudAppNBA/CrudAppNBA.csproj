@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministracionEquipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministracionEquipos.Designer.cs">
+      <DependentUpon>AdministracionEquipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmActualizarEstadisticas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdministracionEquipos.resx">
+      <DependentUpon>AdministracionEquipos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmActualizarEstadisticas.resx">
       <DependentUpon>frmActualizarEstadisticas.cs</DependentUpon>
     </EmbeddedResource>

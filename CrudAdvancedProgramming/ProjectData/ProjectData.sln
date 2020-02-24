@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudAppNBA", "CrudAppNBA\Cr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudWeb", "CrudWeb\CrudWeb.csproj", "{33F1B6F8-47FE-490B-8530-778B76941F45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudWebNBA", "CrudWebNBA\CrudWebNBA.csproj", "{EFD947DE-D4E8-4288-9896-095515A082EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{33F1B6F8-47FE-490B-8530-778B76941F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33F1B6F8-47FE-490B-8530-778B76941F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33F1B6F8-47FE-490B-8530-778B76941F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFD947DE-D4E8-4288-9896-095515A082EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD947DE-D4E8-4288-9896-095515A082EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD947DE-D4E8-4288-9896-095515A082EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD947DE-D4E8-4288-9896-095515A082EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

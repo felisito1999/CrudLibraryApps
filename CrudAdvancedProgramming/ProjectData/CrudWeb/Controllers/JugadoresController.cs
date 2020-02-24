@@ -21,6 +21,9 @@ namespace CrudWeb.Controllers
         [HttpPost]
         public ActionResult CreateJugadores(Jugador jugador)
         {
+            ViewBag.Pais = new SelectList(dataMethodsRepo.GetPaisMethods().SelectAllPaises(), "CodigoPais", "NombrePais");
+            ViewBag.Estado = new SelectList(dataMethodsRepo.GetEstadoMethods().SelectAllEstados(), "CodigoEstado", "DescripcionEstado");
+            ViewBag.Sexo = new SelectList(dataMethodsRepo.GetSexoMethods().SelectAllSexos(), "CodigoSexo", "NombreSexo");
             dataMethodsRepo.GetJugadorMethods().InsertJugador(jugador);
             return View(jugador);
         }
@@ -33,6 +36,7 @@ namespace CrudWeb.Controllers
             var estado = dataMethodsRepo.GetEstadoMethods().SelectAllEstados();
             var sexo = dataMethodsRepo.GetSexoMethods().SelectAllSexos();
 
+
             ViewBag.Pais = new SelectList(dataMethodsRepo.GetPaisMethods().SelectAllPaises(), "CodigoPais", "NombrePais");
             ViewBag.Estado = new SelectList(dataMethodsRepo.GetEstadoMethods().SelectAllEstados(), "CodigoEstado", "DescripcionEstado");
             ViewBag.Sexo = new SelectList(dataMethodsRepo.GetSexoMethods().SelectAllSexos(), "CodigoSexo", "NombreSexo");
@@ -44,7 +48,8 @@ namespace CrudWeb.Controllers
         [HttpPost]
         public ActionResult UpdateJugador(Jugador jugador)
         {
-
+            var pais = dataMethodsRepo.GetPaisMethods().SelectPaisesById(Convert.ToInt32(Request.QueryString["Pais.CodigoPais"]));
+            jugador.Pais = pais;
             dataMethodsRepo.GetJugadorMethods().UpdateJugador(jugador);
 
             return View(jugador);

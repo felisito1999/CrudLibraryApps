@@ -166,12 +166,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Jugadores\AllJugadores.cshtml" />
     <Content Include="Views\Jugadores\UpdateJugador.cshtml" />
+    <Content Include="Views\Estadisticas\EstadisticasByJugadorId.cshtml" />
+    <Content Include="Views\Estadisticas\UpdateEstadisticas.cshtml" />
+    <Content Include="Views\Jugadores\AllJugadoresEmpy.cshtml" />
     <Content Include="Views\Jugadores\CreateJugadores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Estadisticas\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -51,21 +51,21 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Pais, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Pais, ViewBag.Pais as SelectList)
+            @Html.DropDownListFor(model => model.Pais, ViewBag.Pais as SelectList, new {htmlAttributes = new { @class = "from-control"} })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Estado.CodigoEstado, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Estado, ViewBag.Estado as SelectList)
+            @Html.DropDownListFor(model => model.Estado.CodigoEstado, ViewBag.Estado as SelectList)
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Sexo, ViewBag.Sexo as SelectList)
+            @Html.DropDownListFor(model => model.Sexo.CodigoSexo, ViewBag.Sexo as SelectList)
         </div>
     </div>
 

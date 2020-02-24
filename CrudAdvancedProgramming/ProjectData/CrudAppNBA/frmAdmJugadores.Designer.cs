@@ -60,6 +60,7 @@
             this.label1.Size = new System.Drawing.Size(125, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtNombre
             // 
@@ -68,6 +69,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(312, 43);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtApellido
             // 
@@ -76,6 +78,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(312, 43);
             this.txtApellido.TabIndex = 3;
+            this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             // 
             // label2
             // 
@@ -86,6 +89,7 @@
             this.label2.Size = new System.Drawing.Size(125, 37);
             this.label2.TabIndex = 2;
             this.label2.Text = "Apellido:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -96,6 +100,7 @@
             this.label3.Size = new System.Drawing.Size(83, 37);
             this.label3.TabIndex = 4;
             this.label3.Text = "Sexo:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -106,6 +111,7 @@
             this.label4.Size = new System.Drawing.Size(276, 37);
             this.label4.TabIndex = 5;
             this.label4.Text = "Fecha de nacimiento:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -116,6 +122,7 @@
             this.label5.Size = new System.Drawing.Size(106, 37);
             this.label5.TabIndex = 6;
             this.label5.Text = "Estado:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // cbSexo
             // 
@@ -128,6 +135,7 @@
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(312, 45);
             this.cbSexo.TabIndex = 9;
+            this.cbSexo.SelectedIndexChanged += new System.EventHandler(this.cbSexo_SelectedIndexChanged);
             // 
             // dtpFechaNacimiento
             // 
@@ -136,6 +144,7 @@
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(488, 43);
             this.dtpFechaNacimiento.TabIndex = 10;
+            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
             // 
             // cbEstado
             // 
@@ -148,6 +157,7 @@
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(312, 45);
             this.cbEstado.TabIndex = 11;
+            this.cbEstado.SelectedIndexChanged += new System.EventHandler(this.cbEstado_SelectedIndexChanged);
             // 
             // dgvJugadores
             // 
@@ -172,6 +182,7 @@
             this.dgvJugadores.RowTemplate.Height = 33;
             this.dgvJugadores.Size = new System.Drawing.Size(1869, 627);
             this.dgvJugadores.TabIndex = 12;
+            this.dgvJugadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJugadores_CellContentClick);
             this.dgvJugadores.SelectionChanged += new System.EventHandler(this.dgvJugadores_SelectionChanged);
             // 
             // btnGuardar
@@ -214,6 +225,7 @@
             this.cbPais.Name = "cbPais";
             this.cbPais.Size = new System.Drawing.Size(312, 45);
             this.cbPais.TabIndex = 16;
+            this.cbPais.SelectedIndexChanged += new System.EventHandler(this.cbPais_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -224,6 +236,7 @@
             this.label6.Size = new System.Drawing.Size(72, 37);
             this.label6.TabIndex = 15;
             this.label6.Text = "Pais:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // btnQuitarSeleccion
             // 
@@ -249,6 +262,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // frmAdmJugadores
             // 

@@ -65,8 +65,8 @@
             @Html.DisplayFor(modelItem => item.FechaNacimiento)
         </td>
         <td>
-            @Html.ActionLink("Edit", "UpdateJugador",  new { id = item.CodigoJugador/* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Actualizar", "UpdateJugador",  new { id = item.CodigoJugador }) |
+            @Html.ActionLink("Estadisticas", "~Views/Estadisticas/EstadisticasByJugadorId", new {id = item.CodigoJugador /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.CodigoJugador/* id=item.PrimaryKey */ })
         </td>
     </tr>

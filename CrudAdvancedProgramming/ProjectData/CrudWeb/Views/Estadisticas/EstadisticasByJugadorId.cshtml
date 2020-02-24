@@ -1,0 +1,129 @@
+﻿@model IEnumerable<ProjectData.Models.EstadisticasJugador>
+
+@{
+    ViewBag.Title = "EstadisticasByJugadorId";
+}
+
+<h2>EstadisticasByJugadorId</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoStats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PuntosTotales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AsistenciasTotales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RebotesTotales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TirosDeCampoIntentados)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TirosDeCampoEncestados)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerdidasDeBalon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JuegosTotales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JuegosIniciados)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PuntosPorJuego)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RebotesPorJuego)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AsistenciasPorJuego)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TirosDeCampoIntentadosPorjuego)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TirosDeCampoEncestadosPorJuego)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerdidasDeBalosPorJuego)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoStats)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PuntosTotales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsistenciasTotales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RebotesTotales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TirosDeCampoIntentados)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TirosDeCampoEncestados)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerdidasDeBalon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JuegosTotales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JuegosIniciados)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PuntosPorJuego)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RebotesPorJuego)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsistenciasPorJuego)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TirosDeCampoIntentadosPorjuego)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TirosDeCampoEncestadosPorJuego)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerdidasDeBalosPorJuego)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateEstadisticas", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
