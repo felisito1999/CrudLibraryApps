@@ -82,9 +82,7 @@ namespace ProjectData.DataMethods
         public List<Jugador> SelectAllJugadores()
         {
             var connection = ConnectionFactory.GetConnection();
-            string selectAllJugadoresCommand = "SELECT a.CodigoJugador, a.NombreJugador AS Nombre, a.ApellidoJugador AS Apellido, b.NombrePais AS Pais, d.NombreSexo AS Sexo, FechaNacimiento " +
-            "AS[Fecha de nacimiento], c.DescripcionEstado AS Estado FROM Jugadores a INNER JOIN Paises b ON a.PaisJugador = b.CodigoPais INNER JOIN Estados c ON " +
-            "a.Estado = c.CodigoEstado INNER JOIN Sexos d ON a.Sexo = d.CodigoSexo;";
+            string selectAllJugadoresCommand = "SELECT CodigoJugador, NombreJugador, ApellidoJugador, PaisJugador, Sexo, FechaNacimiento, Estado FROM Jugadores;";
 
             using (connection)
             {
@@ -105,17 +103,17 @@ namespace ProjectData.DataMethods
                             Sexo sexo = new Sexo();
                             Estado estado = new Estado();
 
-                            pais.NombrePais = reader.GetString(3);
-                            sexo.NombreSexo = reader.GetString(4);
-                            estado.DescripcionEstado = reader.GetString(6);
+                            pais.CodigoPais = reader.GetInt32(3);
+                            sexo.CodigoSexo = reader.GetInt32(4);
+                            estado.CodigoEstado = reader.GetInt32(6);
 
                             jugador.CodigoJugador = reader.GetInt32(0);
                             jugador.Nombre = reader.GetString(1);
                             jugador.Apellido = reader.GetString(2);
-                            jugador.Pais.NombrePais = pais.NombrePais;
-                            jugador.Sexo.NombreSexo = sexo.NombreSexo;
+                            jugador.Pais = pais;
+                            jugador.Sexo = sexo;
                             jugador.FechaNacimiento = reader.GetDateTime(5);
-                            jugador.Estado.DescripcionEstado = estado.DescripcionEstado;
+                            jugador.Estado = estado;
 
                             jugadorList.Add(jugador);
                         }
@@ -243,6 +241,29 @@ namespace ProjectData.DataMethods
                     return filterContainsName;
                 }
             }
+        }
+        public int GetLastIdJugador()
+        {
+            var connection = ConnectionFactory.GetConnection();
+            string getLastJugadorCommand = "SELECT MAX(CodigoJugador) FROM Jugadores";
+            int lastCodigo = 0;
+            using (connection)
+            {
+                using (SqlCommand command = new SqlCommand(getLastJugadorCommand, connection))
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            lastCodigo = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+            return lastCodigo;
         }
     }
 }

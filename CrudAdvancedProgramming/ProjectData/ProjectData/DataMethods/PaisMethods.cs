@@ -40,6 +40,36 @@ namespace ProjectData.DataMethods
                 }
             }
         }
+        public IEnumerable<Pais> SelectAllPaisesWeb()
+        {
+            var connection = ConnectionFactory.GetConnection();
+            string selectAllPaisesCommand = "SELECT CodigoPais, NombrePais FROM Paises;";
+
+            using (connection)
+            {
+                using (SqlCommand command = new SqlCommand(selectAllPaisesCommand, connection))
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    IEnumerable<Pais> paisesList = new List<Pais>();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Pais pais = new Pais();
+
+                            pais.CodigoPais = reader.GetInt32(0);
+                            pais.NombrePais = reader.GetString(1);
+
+                            paisesList.Append(pais);
+                        }
+                    }
+                    connection.Close();
+                    return paisesList;
+                }
+            }
+        }
         public Pais SelectPaisesById(int id)
         {
             var connection = ConnectionFactory.GetConnection();

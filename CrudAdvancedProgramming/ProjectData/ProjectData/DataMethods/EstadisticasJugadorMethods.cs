@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ProjectData.Models;
+using ProjectData.DataMethods;
 
 namespace ProjectData.DataMethods
 {
     public class EstadisticasJugadorMethods
     {
+        DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
         public EstadisticasJugador SelectEstadisticasByIdJugador(int idJugador)
         {
             var connection = ConnectionFactory.GetConnection();
@@ -47,10 +49,6 @@ namespace ProjectData.DataMethods
                         }
                         connection.Close();
                     }
-                    else
-                    {
-
-                    }
                     return estadisticasJugador;
                 }
             }
@@ -58,8 +56,58 @@ namespace ProjectData.DataMethods
         public void InsertEstadisticasJugador(EstadisticasJugador estadisticas)
         {
             var connection = ConnectionFactory.GetConnection();
-            string insertEstadisticasCommand = "INSERT INTO EstadisticasJugador VALUES (@CodigoJugador, @PuntosTotales, @AsistenciasTotales, @RebotesTotales, @TirosDeCampoIntentados, " +
-                "@TirosDeCampoEncestadosyokjnb );";
+            string insertEstadisticasCommand = "INSERT INTO EstadisticasJugador VALUES (@codigoJugador, @puntosTotales, @asistenciasTotales, @rebotesTotales, @tirosDeCampoIntentados, " +
+                "@tirosDeCampoEncestados, @perdidasDeBalon, @juegosTotales, @juegosIniciados, @fechaCreacion, @deleted);";
+
+            using(connection)
+            {
+                using (SqlCommand command = new SqlCommand(insertEstadisticasCommand, connection))
+                {
+                    command.Parameters.AddWithValue("@codigoJugador",estadisticas.Jugador.CodigoJugador);
+                    command.Parameters.AddWithValue("@puntosTotales",estadisticas.PuntosTotales);
+                    command.Parameters.AddWithValue("@asistenciasTotales", estadisticas.AsistenciasTotales);
+                    command.Parameters.AddWithValue("@rebotesTotales",estadisticas.RebotesTotales);
+                    command.Parameters.AddWithValue("@tirosDeCampoIntentados", estadisticas.TirosDeCampoIntentados);
+                    command.Parameters.AddWithValue("@tirosDeCampoEncestados", estadisticas.TirosDeCampoEncestados);
+                    command.Parameters.AddWithValue("@perdidasDeBalon", estadisticas.PerdidasDeBalon);
+                    command.Parameters.AddWithValue("@juegosTotales", estadisticas.JuegosTotales);
+                    command.Parameters.AddWithValue("@juegosIniciados", estadisticas.JuegosIniciados);
+                    command.Parameters.AddWithValue("@fechaCreacion", estadisticas.FechaCreacion);
+                    command.Parameters.AddWithValue("@deleted", estadisticas.Deleted);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+        public void UpdateEstadisticasJugador(EstadisticasJugador estadisticas)
+        {
+            var connection = ConnectionFactory.GetConnection();
+            string updateEstadisticasCommand = "UPDATE EstadisticasJugador SET PuntosTotales = @puntosTotales, AsistenciasTotales = @asistenciasTotales, RebotesTotales = @rebotesTotales, " +
+                "TirosDeCampoIntentados = @tirosIntentados, TirosDeCampoEncestados = @tirosEncestados, PerdidasDeBalon = @perdidasDeBalon, JuegosTotales = @juegosTotales, " +
+                "JuegosIniciados = @juegosIniciados WHERE CodigoJugador = @codigoJugador";
+            using (connection)
+            {
+                using (SqlCommand command = new SqlCommand(updateEstadisticasCommand, connection))
+                {
+                    
+
+                    command.Parameters.AddWithValue("@codigoJugador", ObjectIds.CodigoJugador);
+                    command.Parameters.AddWithValue("@puntosTotales", estadisticas.PuntosTotales);
+                    command.Parameters.AddWithValue("@asistenciasTotales", estadisticas.AsistenciasTotales);
+                    command.Parameters.AddWithValue("@rebotesTotales", estadisticas.RebotesTotales);
+                    command.Parameters.AddWithValue("@tirosIntentados", estadisticas.TirosDeCampoIntentados);
+                    command.Parameters.AddWithValue("@tirosEncestados", estadisticas.TirosDeCampoEncestados);
+                    command.Parameters.AddWithValue("@perdidasDeBalon", estadisticas.PerdidasDeBalon);
+                    command.Parameters.AddWithValue("@juegosTotales", estadisticas.JuegosTotales);
+                    command.Parameters.AddWithValue("@juegosIniciados", estadisticas.JuegosIniciados);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
         }
     }
 }

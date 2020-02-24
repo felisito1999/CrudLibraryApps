@@ -38,3 +38,4 @@ Y:\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.exe
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.pdb
 \\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.frmEstadisticasjugador.resources
+\\Mac\Home\CrudLibraryApps\CrudAdvancedProgramming\ProjectData\CrudAppNBA\obj\Debug\CrudAppNBA.frmActualizarEstadisticas.resources

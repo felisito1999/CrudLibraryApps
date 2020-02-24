@@ -17,18 +17,15 @@ namespace CrudAppNBA
         {
             InitializeComponent();
         }
-        
+        DataMethodsRepo dataMethods = new DataMethodsRepo();
         private void EstadisticasJugador_Load(object sender, EventArgs e)
         {
-            DataMethodsRepo dataMethods = new DataMethodsRepo();
-            var jugadores = dataMethods.GetJugadorMethods().SelectViewJugador();
-            dgvBusquedaJugadores.DataSource = jugadores;
+            LoadData();
         }
 
         private void txtBusquedaJugador_TextChanged(object sender, EventArgs e)
         {
             var nombreJugador = txtBusquedaJugador.Text;
-            DataMethodsRepo dataMethods = new DataMethodsRepo();
             var busquedaJugadores = dataMethods.GetJugadorMethods().SelectJugadorByName(nombreJugador);
             var allJugadores = dataMethods.GetJugadorMethods().SelectViewJugador();
 
@@ -41,14 +38,57 @@ namespace CrudAppNBA
                 dgvBusquedaJugadores.DataSource = busquedaJugadores;
             }
         }
-        public int CodigoJugador;
         private void dgvBusquedaJugadores_SelectionChanged(object sender, EventArgs e)
         {
-            CodigoJugador = (int)dgvBusquedaJugadores[0, dgvBusquedaJugadores.CurrentRow.Index].Value;        
-            DataMethodsRepo dataMethods = new DataMethodsRepo();
-            var EstadisticasJugador = dataMethods.GetEstadisticasJugadorMethods().SelectEstadisticasByIdJugador(CodigoJugador);
-            dgvEstadisticasJugadores.DataSource = EstadisticasJugador;
+            ObjectIds.CodigoJugador = (int)dgvBusquedaJugadores[0, dgvBusquedaJugadores.CurrentRow.Index].Value;        
+            var EstadisticasJugador = dataMethods.GetEstadisticasJugadorMethods().SelectEstadisticasByIdJugador(ObjectIds.CodigoJugador);
 
+            if (EstadisticasJugador is null)
+            {
+                lblPuntosT.Text = "0";
+                lblAsistenciasT.Text = "0";
+                lblRebT.Text = "0";
+                lblTirosDeCampoT.Text = "0";
+                lblTirosDeCampoET.Text = "0";
+                lblPerdidasT.Text = "0";
+                lblJuegosTotales.Text = "0";
+                lblJuegosIniciados.Text = "0";
+                lblPuntosPorJuego.Text = "0";
+                lblAsistenciasPorJuego.Text = "0";
+                lblRebotesPorJuego.Text = "0";
+                lblTirosIntentadosPorJuego.Text = "0";
+                lblTirosDeCampoEncestadosPorJuego.Text = "0";
+                lblPerdidasDeBalonPorJuego.Text = "0";
+            }
+            else
+            {
+                lblPuntosT.Text = EstadisticasJugador.PuntosTotales.ToString();
+                lblAsistenciasT.Text = EstadisticasJugador.AsistenciasTotales.ToString();
+                lblRebT.Text = EstadisticasJugador.RebotesTotales.ToString();
+                lblTirosDeCampoT.Text = EstadisticasJugador.TirosDeCampoIntentados.ToString();
+                lblTirosDeCampoET.Text = EstadisticasJugador.TirosDeCampoEncestados.ToString();
+                lblPerdidasT.Text = EstadisticasJugador.PerdidasDeBalon.ToString();
+                lblJuegosTotales.Text = EstadisticasJugador.JuegosTotales.ToString();
+                lblJuegosIniciados.Text = EstadisticasJugador.JuegosIniciados.ToString();
+                lblPuntosPorJuego.Text = EstadisticasJugador.PuntosPorJuego.ToString();
+                lblAsistenciasPorJuego.Text = EstadisticasJugador.AsistenciasPorJuego.ToString();
+                lblRebotesPorJuego.Text = EstadisticasJugador.RebotesPorJuego.ToString();
+                lblTirosIntentadosPorJuego.Text = EstadisticasJugador.TirosDeCampoIntentadosPorjuego.ToString();
+                lblTirosDeCampoEncestadosPorJuego.Text = EstadisticasJugador.TirosDeCampoEncestadosPorJuego.ToString();
+                lblPerdidasDeBalonPorJuego.Text = EstadisticasJugador.PerdidasDeBalosPorJuego.ToString();
+            }
+        }
+
+        private void btnActualizarEstadisticas_Click(object sender, EventArgs e)
+        {
+            frmActualizarEstadisticas actualizarEstadisticas = new frmActualizarEstadisticas();
+            actualizarEstadisticas.ShowDialog();
+            LoadData();
+        }
+        private void LoadData()
+        {
+            var jugadores = dataMethods.GetJugadorMethods().SelectViewJugador();
+            dgvBusquedaJugadores.DataSource = jugadores;
         }
     }
 }

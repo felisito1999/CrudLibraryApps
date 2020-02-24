@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjectData.Models.ViewJugador>
+
+@{
+    ViewBag.Title = "AllJugadores";
+}
+
+<h2>AllJugadores</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateJugadores")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoJugador)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombrePais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreSexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionEstado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoJugador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombrePais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreSexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescripcionEstado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaNacimiento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateJugador",  new { id = item.CodigoJugador/* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CodigoJugador/* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

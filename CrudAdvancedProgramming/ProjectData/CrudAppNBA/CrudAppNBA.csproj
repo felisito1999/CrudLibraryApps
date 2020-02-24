@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmActualizarEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActualizarEstadisticas.Designer.cs">
+      <DependentUpon>frmActualizarEstadisticas.cs</DependentUpon>
+    </Compile>
     <Compile Include="EstadisticasJugador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmActualizarEstadisticas.resx">
+      <DependentUpon>frmActualizarEstadisticas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EstadisticasJugador.resx">
       <DependentUpon>EstadisticasJugador.cs</DependentUpon>
     </EmbeddedResource>

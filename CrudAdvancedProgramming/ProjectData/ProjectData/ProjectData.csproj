@@ -48,6 +48,7 @@
     <Compile Include="DataMethods\EstadisticasJugadorMethods.cs" />
     <Compile Include="DataMethods\EstadoMethods.cs" />
     <Compile Include="DataMethods\JugadorMethods.cs" />
+    <Compile Include="DataMethods\ObjectIds.cs" />
     <Compile Include="DataMethods\PaisMethods.cs" />
     <Compile Include="DataMethods\SexoMethods.cs" />
     <Compile Include="Models\Equipo.cs" />

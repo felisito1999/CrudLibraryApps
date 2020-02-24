@@ -15,11 +15,11 @@ namespace CrudAppNBA
 {
     public partial class frmAdmJugadores : Form
     {
+        DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
         public frmAdmJugadores()
         {
             InitializeComponent();
         }
-
         public int CodigoJugador;
         private void frmAdmJugadores_Load(object sender, EventArgs e)
         {
@@ -29,8 +29,7 @@ namespace CrudAppNBA
         public void LoadData()
         {
             try
-            {
-                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
+            { 
 
                 cbSexo.DataSource = dataMethodsRepo.GetSexoMethods().SelectAllSexos();
                 cbSexo.DisplayMember = "NombreSexo";
@@ -53,81 +52,96 @@ namespace CrudAppNBA
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {  
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) == false & string.IsNullOrWhiteSpace(txtApellido.Text) == false & 
-                dtpFechaNacimiento.Value.Date <= DateTime.Now.Date)
+        {
+            try
             {
-                if (CodigoJugador != 0)
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) == false & string.IsNullOrWhiteSpace(txtApellido.Text) == false &
+                dtpFechaNacimiento.Value.Date <= DateTime.Now.Date)
                 {
-                    Jugador jugador = new Jugador();
+                    if (CodigoJugador != 0)
+                    {
+                        Jugador jugador = new Jugador();
 
-                    Pais pais = new Pais();
-                    pais.CodigoPais = (int)cbPais.SelectedValue;
-                    pais.NombrePais = cbPais.SelectedText;
+                        Pais pais = new Pais();
+                        pais.CodigoPais = (int)cbPais.SelectedValue;
+                        pais.NombrePais = cbPais.SelectedText;
 
-                    Sexo sexo = new Sexo();
-                    sexo.CodigoSexo = (int)cbSexo.SelectedValue;
-                    sexo.NombreSexo = cbSexo.SelectedText;
+                        Sexo sexo = new Sexo();
+                        sexo.CodigoSexo = (int)cbSexo.SelectedValue;
+                        sexo.NombreSexo = cbSexo.SelectedText;
 
-                    Estado estado = new Estado();
-                    estado.CodigoEstado = (int)cbEstado.SelectedValue;
-                    estado.DescripcionEstado = cbEstado.SelectedText;
+                        Estado estado = new Estado();
+                        estado.CodigoEstado = (int)cbEstado.SelectedValue;
+                        estado.DescripcionEstado = cbEstado.SelectedText;
 
-                    EstadisticasJugador estadisticas = new EstadisticasJugador();
-                    estad
+                        EstadisticasJugador estadisticas = new EstadisticasJugador();
 
-                    jugador.CodigoJugador = CodigoJugador;
-                    jugador.Nombre = txtNombre.Text;
-                    jugador.Apellido = txtApellido.Text;
-                    jugador.Sexo = sexo;
-                    jugador.FechaNacimiento = dtpFechaNacimiento.Value.Date;
-                    jugador.Pais = pais;
-                    jugador.FechaCreacion = DateTime.Now;
-                    jugador.Estado = estado;
 
-                    DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
+                        jugador.CodigoJugador = CodigoJugador;
+                        jugador.Nombre = txtNombre.Text;
+                        jugador.Apellido = txtApellido.Text;
+                        jugador.Sexo = sexo;
+                        jugador.FechaNacimiento = dtpFechaNacimiento.Value.Date;
+                        jugador.Pais = pais;
+                        jugador.FechaCreacion = DateTime.Now;
+                        jugador.Estado = estado;
 
-                    dataMethodsRepo.GetJugadorMethods().UpdateJugador(jugador);
-                    LoadData();
-                    ClearFields();
-                    MessageBox.Show("El jugador ha sido actualizado exitosamente!");
+                        dataMethodsRepo.GetJugadorMethods().UpdateJugador(jugador);
+                        LoadData();
+                        ClearFields();
+                        MessageBox.Show("El jugador ha sido actualizado exitosamente!");
+                    }
+                    else
+                    {
+                        Pais pais = new Pais();
+                        pais.CodigoPais = (int)cbPais.SelectedValue;
+                        pais.NombrePais = cbPais.SelectedText;
+
+                        Sexo sexo = new Sexo();
+                        sexo.CodigoSexo = (int)cbSexo.SelectedValue;
+                        sexo.NombreSexo = cbSexo.SelectedText;
+
+                        Estado estado = new Estado();
+                        estado.CodigoEstado = (int)cbEstado.SelectedValue;
+                        estado.DescripcionEstado = cbEstado.SelectedText;
+
+                        Jugador jugador = new Jugador();
+                        jugador.CodigoJugador = dataMethodsRepo.GetJugadorMethods().GetLastIdJugador();
+                        jugador.Nombre = txtNombre.Text;
+                        jugador.Apellido = txtApellido.Text;
+                        jugador.Sexo = sexo;
+                        jugador.FechaNacimiento = dtpFechaNacimiento.Value.Date;
+                        jugador.Pais = pais;
+                        jugador.FechaCreacion = DateTime.Now;
+                        jugador.Estado = estado;
+
+                        EstadisticasJugador estadisticas = new EstadisticasJugador();
+                        estadisticas.Jugador = jugador;
+                        estadisticas.PuntosTotales = 0;
+                        estadisticas.AsistenciasTotales = 0;
+                        estadisticas.RebotesTotales = 0;
+                        estadisticas.PerdidasDeBalon = 0;
+                        estadisticas.JuegosTotales = 0;
+                        estadisticas.JuegosIniciados = 0;
+                        estadisticas.FechaCreacion = DateTime.Now;
+                        estadisticas.Deleted = false;
+
+                        dataMethodsRepo.GetJugadorMethods().InsertJugador(jugador);
+                        dataMethodsRepo.GetEstadisticasJugadorMethods().InsertEstadisticasJugador(estadisticas);
+                        LoadData();
+                        ClearFields();
+                        MessageBox.Show("El jugador ha sido ingresado existosamente");
+                    }
                 }
                 else
                 {
-                    Jugador jugador = new Jugador();
-
-                    Pais pais = new Pais();
-                    pais.CodigoPais = (int)cbPais.SelectedValue;
-                    pais.NombrePais = cbPais.SelectedText;
-
-                    Sexo sexo = new Sexo();
-                    sexo.CodigoSexo = (int)cbSexo.SelectedValue;
-                    sexo.NombreSexo = cbSexo.SelectedText;
-
-                    Estado estado = new Estado();
-                    estado.CodigoEstado = (int)cbEstado.SelectedValue;
-                    estado.DescripcionEstado = cbEstado.SelectedText;
-
-                    jugador.Nombre = txtNombre.Text;
-                    jugador.Apellido = txtApellido.Text;
-                    jugador.Sexo = sexo;
-                    jugador.FechaNacimiento = dtpFechaNacimiento.Value.Date;
-                    jugador.Pais = pais;
-                    jugador.FechaCreacion = DateTime.Now;
-                    jugador.Estado = estado;
-
-                    DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
-
-                    dataMethodsRepo.GetJugadorMethods().InsertJugador(jugador);
-                    LoadData();
-                    ClearFields();
-                    MessageBox.Show("El jugador ha sido ingresado existosamente");
+                    MessageBox.Show("Uno de los campos no ha sido completado correctamente\n" +
+                        "revise los campos e intente de nuevo");
                 }
             }
-            else
+            catch ( Exception ex)
             {
-                MessageBox.Show("Uno de los campos no ha sido completado correctamente\n" +
-                    "revise los campos e intente de nuevo");
+                MessageBox.Show("Ha ocurrido el siguiente problema" + ex.ToString());
             }
         }
         public void ClearFields()
@@ -157,7 +171,6 @@ namespace CrudAppNBA
         {
             if (dgvJugadores.RowCount >= 1)
             {
-                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
                 CodigoJugador = (int)dgvJugadores[0, dgvJugadores.CurrentRow.Index].Value;
 
                 var jugador = dataMethodsRepo.GetJugadorMethods().SelectJugadorById(CodigoJugador);
@@ -175,7 +188,6 @@ namespace CrudAppNBA
         {
             if (CodigoJugador != 0)
             {
-                DataMethodsRepo dataMethodsRepo = new DataMethodsRepo();
 
                 dataMethodsRepo.GetJugadorMethods().DeletedUpdateJugadores(CodigoJugador);
                 LoadData();

@@ -10,7 +10,7 @@ namespace ProjectData.Models
     {
         public EstadisticasJugador()
         {
-            this.AsistenciasPorJuego = 2;
+
         }
         public int CodigoStats { get; set; }
         public Jugador Jugador { get; set; }
@@ -27,42 +27,60 @@ namespace ProjectData.Models
         public double PuntosPorJuego { 
             get 
             {
-                return PuntosTotales / JuegosTotales;
+                if (JuegosTotales != 0)
+                    return PuntosTotales / JuegosTotales;
+                else
+                    return 0;
             }
         }
         public double RebotesPorJuego
         {
             get
             {
-                return RebotesTotales / JuegosTotales;
+                if (RebotesTotales != 0)
+                    return RebotesTotales / JuegosTotales;
+                else
+                    return 0;
             }
         }
         public double AsistenciasPorJuego
         {
             get
             {
-                return AsistenciasTotales / JuegosTotales;
+                if (AsistenciasTotales != 0)
+                    return AsistenciasTotales / JuegosTotales;
+                else
+                    return 0;
             }
         }
         public double TirosDeCampoIntentadosPorjuego 
         { 
             get
             {
-                return TirosDeCampoIntentados / JuegosTotales;
+                if (TirosDeCampoIntentados != 0)
+                    return TirosDeCampoIntentados / JuegosTotales;
+                else
+                    return 0;
             }
         }
         public double TirosDeCampoEncestadosPorJuego 
         { 
             get
             {
-                return TirosDeCampoEncestados / JuegosTotales;
+                if  (TirosDeCampoEncestados != 0)
+                    return TirosDeCampoEncestados / JuegosTotales;
+                else
+                    return 0;
             } 
         }
         public double PerdidasDeBalosPorJuego
         {
             get
             {
-                return PerdidasDeBalon / JuegosTotales;
+                if (PerdidasDeBalon != 0)
+                    return PerdidasDeBalon / JuegosTotales;
+                else
+                    return 0;
             }
         }
     }
